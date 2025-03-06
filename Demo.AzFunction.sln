@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.AzFunction", "Demo.AzFunction\Demo.AzFunction.csproj", "{3C9CF845-891F-41DA-8DB6-4CF328901E9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendQueue", "SendQueue\SendQueue.csproj", "{5608B846-241A-4971-81AA-3AB6EF324414}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C9CF845-891F-41DA-8DB6-4CF328901E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C9CF845-891F-41DA-8DB6-4CF328901E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C9CF845-891F-41DA-8DB6-4CF328901E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C9CF845-891F-41DA-8DB6-4CF328901E9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5608B846-241A-4971-81AA-3AB6EF324414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5608B846-241A-4971-81AA-3AB6EF324414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5608B846-241A-4971-81AA-3AB6EF324414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5608B846-241A-4971-81AA-3AB6EF324414}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
