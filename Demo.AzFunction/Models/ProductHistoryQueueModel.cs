@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Demo.AzFunction.Models;
 
@@ -36,10 +37,13 @@ public class ProductHistoryQueueModel
 
     public TtUpdateType UpdateType { get; set; }
 
+    [JsonPropertyName("marketCode")]
     public string MarketCode { get; set; } = string.Empty;
-
+    
+    [JsonPropertyName("productCode")]
     public string ProductCode { get; set; } = string.Empty;
-
+    
+    [JsonPropertyName("productPeriodCode")]
     public string ProductPeriodCode { get; set; } = string.Empty;
 
     public List<ProductMarketDepthModel> BidMarketDepth { get; set; } = new List<ProductMarketDepthModel>();

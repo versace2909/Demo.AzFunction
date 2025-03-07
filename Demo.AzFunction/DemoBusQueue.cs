@@ -30,7 +30,30 @@ public class DemoBusQueue
         var demoDbContext = new DemoDbContext();
         var vvv = new MarketDepthService(demoDbContext, _logger);
         var productHistoryQueueModel = JsonSerializer.Deserialize<ProductHistoryQueueModel>(message.Body);
-        await vvv.HandleMarketDepthAsync(productHistoryQueueModel, productHistoryQueueModel.ProductPeriodCode == "BQ Jul25" ? 2 : 1, DateTime.Now);
+        var periodId = productHistoryQueueModel.ProductPeriodCode.ToLower() == "BQ Jul25".ToLower() ? 2 : 1;
+        _logger.LogInformation("PeriodCode = {PeriodCode} PeriodId = {PeriodId}",
+            productHistoryQueueModel.ProductPeriodCode, periodId);
+        await vvv.HandleMarketDepthAsync(productHistoryQueueModel, periodId, DateTime.Now);
+        await demoDbContext.SaveChangesAsync();
+        // Complete the message
+        await messageActions.CompleteMessageAsync(message);
+    }
+    
+    [Function("DemoBusQueue2")]
+    public async Task RunQueue2(
+        [ServiceBusTrigger("queue.2", Connection = "ServiceBusConnection")]
+        ServiceBusReceivedMessage message,
+        ServiceBusMessageActions messageActions)
+    {
+        _logger.LogInformation("Message {Id} {SessionId}", message.MessageId, message.SessionId);
+
+        var demoDbContext = new DemoDbContext();
+        var vvv = new MarketDepthService(demoDbContext, _logger);
+        var productHistoryQueueModel = JsonSerializer.Deserialize<ProductHistoryQueueModel>(message.Body);
+        var periodId = productHistoryQueueModel.ProductPeriodCode.ToLower() == "BQ Jul25".ToLower() ? 2 : 1;
+        _logger.LogInformation("PeriodCode = {PeriodCode} PeriodId = {PeriodId}",
+            productHistoryQueueModel.ProductPeriodCode, periodId);
+        await vvv.HandleMarketDepthAsync(productHistoryQueueModel, periodId, DateTime.Now);
         await demoDbContext.SaveChangesAsync();
         // Complete the message
         await messageActions.CompleteMessageAsync(message);

@@ -10,8 +10,10 @@ const int numOfMessagesPerBatch = 5;
 const int numOfBatches = 5;
 
 string queueName = "queue.1";
+string queueName2 = "queue.2";
 var client = new ServiceBusClient(_connectionString);
 var sender = client.CreateSender(queueName);
+var sender2 = client.CreateSender(queueName2);
 
 var marketData1 = new ProductPeriodPriceHistory
 {
@@ -33,15 +35,15 @@ var marketData1 = new ProductPeriodPriceHistory
     QuantityTransaction = 2,
     BidMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 2, Price = 91 },
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 4, Price = 90.75m },
-        new ProductMarketDepth { DepthLevel = 2, Quantity = 1, Price = 89 },
-        new ProductMarketDepth { DepthLevel = 3, Quantity = 2, Price = 88.54m }
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 2, Price = 91},
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 4, Price = 90.75m},
+        new ProductMarketDepth {DepthLevel = 2, Quantity = 1, Price = 89},
+        new ProductMarketDepth {DepthLevel = 3, Quantity = 2, Price = 88.54m}
     },
     AskMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 2, Price = 93 },
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 1, Price = 92 }
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 2, Price = 93},
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 1, Price = 92}
     },
     MarketCode = "ASX",
     ProductCode = "BQ",
@@ -69,15 +71,15 @@ var marketData2 = new ProductPeriodPriceHistory
     QuantityTransaction = 2,
     BidMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 2, Price = 91 },
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 4, Price = 90.75m },
-        new ProductMarketDepth { DepthLevel = 2, Quantity = 2, Price = 89 },
-        new ProductMarketDepth { DepthLevel = 3, Quantity = 2, Price = 88.54m }
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 2, Price = 91},
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 4, Price = 90.75m},
+        new ProductMarketDepth {DepthLevel = 2, Quantity = 2, Price = 89},
+        new ProductMarketDepth {DepthLevel = 3, Quantity = 2, Price = 88.54m}
     },
     AskMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 2, Price = 93 },
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 1, Price = 92 }
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 2, Price = 93},
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 1, Price = 92}
     },
     MarketCode = "ASX",
     ProductCode = "BQ",
@@ -105,15 +107,15 @@ var marketData3 = new ProductPeriodPriceHistory
     QuantityTransaction = 2,
     BidMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 2, Price = 91 },
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 4, Price = 90.75m },
-        new ProductMarketDepth { DepthLevel = 2, Quantity = 3, Price = 89 },
-        new ProductMarketDepth { DepthLevel = 3, Quantity = 2, Price = 88.54m }
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 2, Price = 91},
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 4, Price = 90.75m},
+        new ProductMarketDepth {DepthLevel = 2, Quantity = 3, Price = 89},
+        new ProductMarketDepth {DepthLevel = 3, Quantity = 2, Price = 88.54m}
     },
     AskMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 2, Price = 93 },
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 1, Price = 92 }
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 2, Price = 93},
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 1, Price = 92}
     },
     MarketCode = "ASX",
     ProductCode = "BQ",
@@ -141,15 +143,16 @@ var marketData4 = new ProductPeriodPriceHistory
     QuantityTransaction = 2,
     BidMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 2, Price = 91 },
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 4, Price = 90.75m },
-        new ProductMarketDepth { DepthLevel = 2, Quantity = 2, Price = 89 },
-        new ProductMarketDepth { DepthLevel = 3, Quantity = 4, Price = 88.54m }
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 2, Price = 91},
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 4, Price = 90.75m},
+        new ProductMarketDepth {DepthLevel = 2, Quantity = 2, Price = 89},
+        new ProductMarketDepth {DepthLevel = 3, Quantity = 4, Price = 88.54m}
     },
     AskMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 2, Price = 93 },
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 1, Price = 92 }
+        new ProductMarketDepth {DepthLevel = 2, Quantity = 29, Price = 2909.91m},
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 2, Price = 93},
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 1, Price = 92}
     },
     MarketCode = "ASX",
     ProductCode = "BQ",
@@ -178,15 +181,15 @@ var marketData5 = new ProductPeriodPriceHistory
     QuantityTransaction = 2,
     BidMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 2, Price = 91 },
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 4, Price = 90.75m },
-        new ProductMarketDepth { DepthLevel = 2, Quantity = 2, Price = 89 },
-        new ProductMarketDepth { DepthLevel = 3, Quantity = 4, Price = 88.54m }
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 2, Price = 91},
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 4, Price = 90.75m},
+        new ProductMarketDepth {DepthLevel = 2, Quantity = 2, Price = 89},
+        new ProductMarketDepth {DepthLevel = 3, Quantity = 4, Price = 88.54m}
     },
     AskMarketDepth = new List<ProductMarketDepth>
     {
-        new ProductMarketDepth { DepthLevel = 1, Quantity = 2, Price = 93 },
-        new ProductMarketDepth { DepthLevel = 0, Quantity = 1, Price = 92 }
+        new ProductMarketDepth {DepthLevel = 1, Quantity = 2, Price = 93},
+        new ProductMarketDepth {DepthLevel = 0, Quantity = 1, Price = 92}
     },
     MarketCode = "ASX",
     ProductCode = "BQ",
@@ -194,7 +197,14 @@ var marketData5 = new ProductPeriodPriceHistory
     DatePeriod = ""
 };
 
-var lists = new List<ProductPeriodPriceHistory> { marketData1, marketData2, marketData3, marketData4, marketData5 };
+var lists = new List<ProductPeriodPriceHistory>
+{
+    marketData1, marketData2, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3,
+    marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3,
+    marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3,
+    marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData3, marketData4,
+    marketData5
+};
 
 foreach (var list in lists)
 {
@@ -207,29 +217,18 @@ foreach (var list in lists)
     await sender.SendMessagesAsync(messageBatch);
 }
 
-
-// using ServiceBusMessageBatch messageBatch2 = await sender.CreateMessageBatchAsync();
-//
-//
-// messageBatch2.TryAddMessage(new ServiceBusMessage(JsonSerializer.Serialize(marketData2))
+// var list2 = new List<ProductPeriodPriceHistory>
 // {
-//     SessionId = marketData2.ProductPeriodCode
-// });
+//     marketData1, marketData2, marketData3, marketData4,
+//     marketData5
+// };
 //
-// await sender.SendMessagesAsync(messageBatch2);
-
-
-// for (int i = 1; i <= numOfBatches; i++)
+// foreach(var list in list2)
 // {
-//     var sessionId = "session" + i;
-//
-//     for (int j = 1; j <= numOfMessagesPerBatch; j++)
-//     {
-//         
-//     }
-//
+//     await sender2.SendMessageAsync(new ServiceBusMessage(JsonSerializer.Serialize(list)));
 // }
 
+await sender2.DisposeAsync();
 await sender.DisposeAsync();
 await client.DisposeAsync();
 
